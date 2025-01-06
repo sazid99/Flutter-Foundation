@@ -21,6 +21,7 @@ class _CustomAppbarState extends State<CustomAppbar> {
   @override
   Widget build(BuildContext context) {
     final themProvider = Provider.of<ThemeProvider>(context);
+    bool isHomePage = ModalRoute.of(context)?.settings.name == '/';
     return Padding(
       padding: const EdgeInsets.only(left: 15, right: 15, top: 2),
       child: ClipRRect(
@@ -33,14 +34,18 @@ class _CustomAppbarState extends State<CustomAppbar> {
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
           centerTitle: true,
-          leading: Padding(
-            padding: const EdgeInsets.only(left: 10),
-            child: IconButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                icon: Icon(Icons.arrow_back)),
-          ),
+          leading: isHomePage 
+              ? null 
+              : Padding(
+                  padding: const EdgeInsets.only(left: 10),
+                  child: IconButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon: Icon(Icons.arrow_back),
+                  ),
+                ),
+
           actions: [
             IconButton(
               onPressed: () {
