@@ -11,12 +11,12 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppbar(text: "Flutter Foundation"),
       body: Center(
-        child: Row(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           spacing: 20,
           children: [
-            CustomElevatedButton(text: "Dart", path: () => FlutterPage()),
             CustomElevatedButton(text: "Flutter", path: () => FlutterPage()),
+            CustomElevatedButton(text: "Dart", path: () => FlutterPage()),
           ],
         ),
       ),

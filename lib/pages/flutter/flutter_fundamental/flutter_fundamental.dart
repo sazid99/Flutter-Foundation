@@ -9,7 +9,7 @@ class FlutterFundamental extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppbar(text: "Flutter"),
+      appBar: CustomAppbar(text: "Flutter Fundamental"),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
