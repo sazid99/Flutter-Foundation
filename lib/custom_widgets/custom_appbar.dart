@@ -21,40 +21,57 @@ class _CustomAppbarState extends State<CustomAppbar> {
   @override
   Widget build(BuildContext context) {
     final themProvider = Provider.of<ThemeProvider>(context);
-    return AppBar(
-      title: Text(widget.text),
-      centerTitle: true,
-      leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: Icon(Icons.arrow_back)),
-      actions: [
-        IconButton(
-          onPressed: () {
-            setState(
-              () {
-                themProvider.toggleTheme();
-              },
-            );
-          },
-          icon: Icon(
-            themProvider.themeData == ThemeData.light()
-                ? Icons.dark_mode
-                : Icons.light_mode,
+    return Padding(
+      padding: const EdgeInsets.only(left: 15, right: 15, top: 2),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(25),
+        child: AppBar(
+          backgroundColor: Colors.lightBlue,
+          foregroundColor: Colors.yellow,
+          title: Text(
+            widget.text,
+            style: TextStyle(fontWeight: FontWeight.bold),
           ),
+          centerTitle: true,
+          leading: Padding(
+            padding: const EdgeInsets.only(left: 10),
+            child: IconButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: Icon(Icons.arrow_back)),
+          ),
+          actions: [
+            IconButton(
+              onPressed: () {
+                setState(
+                  () {
+                    themProvider.toggleTheme();
+                  },
+                );
+              },
+              icon: Icon(
+                themProvider.themeData == ThemeData.light()
+                    ? Icons.dark_mode
+                    : Icons.light_mode,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 10),
+              child: IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => HomePage(),
+                      ),
+                    );
+                  },
+                  icon: Icon(Icons.home)),
+            )
+          ],
         ),
-        IconButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => HomePage(),
-                ),
-              );
-            },
-            icon: Icon(Icons.home))
-      ],
+      ),
     );
   }
 }
